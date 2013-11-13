@@ -173,7 +173,7 @@ void  __init_tls(void**  tls, void*  thread)
     // of the x86 Linux kernel thread-local-storage
     tls[TLS_SLOT_SELF]      = (void*)tls;
     tls[TLS_SLOT_THREAD_ID] = thread;
-    for (nn = TLS_SLOT_ERRNO; nn < BIONIC_TLS_SLOTS; nn++)
+    for (nn = (TLS_SLOT_THREAD_ID + 1); nn < BIONIC_TLS_SLOTS; nn++)
        tls[nn] = 0;
 
     __set_tls( (void*)tls );

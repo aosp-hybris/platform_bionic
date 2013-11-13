@@ -65,7 +65,7 @@ __BEGIN_DECLS
  * function will then clear it. Since its use is extremely temporary,
  * we reuse an existing location.
  */
-#define  TLS_SLOT_BIONIC_PREINIT    (TLS_SLOT_ERRNO+1)
+#define  TLS_SLOT_BIONIC_PREINIT    3
 
 /* small technical note: it is not possible to call pthread_setspecific
  * on keys that are <= TLS_SLOT_MAX_WELL_KNOWN, which is why it is set to
@@ -78,7 +78,7 @@ __BEGIN_DECLS
  */
 #define TLS_SLOT_MAX_WELL_KNOWN     TLS_SLOT_ERRNO
 
-#define TLS_DEFAULT_ALLOC_MAP       0x0000001F
+#define TLS_DEFAULT_ALLOC_MAP       0x000000FF
 
 /* set the Thread Local Storage, must contain at least BIONIC_TLS_SLOTS pointers */
 extern void __init_tls(void**  tls, void*  thread_info);
