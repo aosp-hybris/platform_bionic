@@ -28,12 +28,13 @@
 
 #include <errno.h>
 
-
+#ifdef LIBC_STATIC
 int __set_errno(int n)
 {
     errno = n;
     return -1;
 }
+#endif
 
 /*
  * this function is called from syscall stubs,
@@ -45,7 +46,7 @@ int __set_syscall_errno(int n)
 {
         /* some syscalls, mmap() for example, have valid return
         ** values that are "negative".  Since errno values are not
-        ** greater than 131 on Linux, we will just consider 
+        ** greater than 131 on Linux, we will just consider
         ** anything significantly out of range as not-an-error
         */
     if(n > -256) {
