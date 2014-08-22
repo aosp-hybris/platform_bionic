@@ -800,8 +800,8 @@ include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-	$(libc_arch_static_src_files) \
 	$(libc_static_common_src_files) \
+	$(libc_arch_static_src_files) \
 	bionic/__set_errno.c \
 	bionic/libc_init_static.c
 
@@ -979,6 +979,7 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 LOCAL_SHARED_LIBRARIES := libc libdl
 LOCAL_WHOLE_STATIC_LIBRARIES := libc_common
 LOCAL_SYSTEM_SHARED_LIBRARIES :=
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 
 # Don't install on release build
 LOCAL_MODULE_TAGS := eng debug
